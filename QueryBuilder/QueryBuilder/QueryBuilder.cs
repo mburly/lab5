@@ -94,7 +94,6 @@ namespace QueryBuilder
 
             var values = new List<string>();
             var names = new List<string>();
-            Console.WriteLine("Hello???");
             foreach(PropertyInfo property in properties)
             {
                 values.Add("\"" + property.GetValue(obj).ToString() + "\"");
@@ -103,8 +102,6 @@ namespace QueryBuilder
 
             StringBuilder sbVals = new StringBuilder();
             StringBuilder sbNames = new StringBuilder();
-
-            Console.WriteLine("Are we alive?");
 
             for(int i = 0; i < values.Count; i++)
             {
@@ -120,16 +117,11 @@ namespace QueryBuilder
                 }
             }
 
-            Console.WriteLine("Wha");
-
             var command = connection.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandTimeout = 0;
             command.CommandText = $"INSERT INTO {typeof(T).Name} ({sbNames}) VALUES ({sbVals})";
-            Console.WriteLine(command.CommandText);
             command.ExecuteNonQuery();
-            Console.WriteLine("????");
-
         }
 
         public void Update<T>(T obj) where T : IClassModel, new()

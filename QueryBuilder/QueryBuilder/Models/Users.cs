@@ -29,5 +29,16 @@ namespace QueryBuilder.Models
             Email = email;
             PhoneNumber = phoneNumber;
         }
+
+        public override string ToString()
+        {
+            return $"Id = {Id}\n" +
+                $"Username = {UserName}\n" +
+                $"Address = {UserAddress}\n" +
+                $"Details = {OtherUserDetails}\n" +
+                $"Fine Amount = {AmountOfFine}\n" +
+                $"Email = {Email}\n" +
+                $"Phone Number = {PhoneNumber}\n";
+        }
     }
 }

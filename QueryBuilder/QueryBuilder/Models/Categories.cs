@@ -20,9 +20,5 @@ namespace QueryBuilder.Models
             Name = name;
         }
 
-        /*public override string ToString()
-        {
-            return $"Cateogry Name: {this.Name}";
-        }*/
     }
 }
