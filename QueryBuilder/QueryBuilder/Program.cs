@@ -9,74 +9,46 @@ namespace QueryBuilder
             string dbPath = $"{FileRoot.Root}{Path.DirectorySeparatorChar}Data{Path.DirectorySeparatorChar}data.db";
             QueryBuilder qb = new QueryBuilder(dbPath);
 
-            // Create objects to add to the database
-            Categories c = new Categories(1, "Spooky");
-            Categories c2 = new Categories(2, "Fantasy");
-            Author a = new Author(1, "George R. R.", "Martin");
-            Books b = new Books(1, "A Game of Thrones", "9780553593716", "8/1/1996", 2, 1);
-            Users u = new Users(1, "burlesonmf", "3001 Moss Creek Drive", "Student", 25, "burlesonmf@etsu.edu", "4074468773");
-            BooksOutOnLoan bol = new BooksOutOnLoan(1, 1, "6/1/2022", "6/15/2022", "6/24/2022", 1);
+            // Create author objects
+            Author a1 = new Author(1, "George", "Martin");
+            Author a2 = new Author(2, "J.K", "Johnson");
 
-            // Add categories to database
-            qb.Create(c);
-            qb.Create(c2);
+            // Add author object to database
+            qb.Create<Author>(a1);
+            qb.Create<Author>(a2);
 
-            // Add author to database
-            qb.Create(a);
+            Console.WriteLine("All Authors");
+            Console.WriteLine("====================");
 
-            // Add book to database
-            qb.Create(b);
-
-            // Add user to database
-            qb.Create(u);
-
-            // Log books out on loan in the database
-            qb.Create(bol);
-
-            Console.WriteLine("Categories");
-            // Read all of the categories from the database into a list
-            List<Categories> cats = qb.ReadAll<Categories>();
-            foreach(Categories cat in cats)
+            // Read and list all authors in the database
+            List<Author> authors = qb.ReadAll<Author>();
+            foreach(Author author in authors)
             {
-                Console.WriteLine(cat.Name.ToString());
+                Console.WriteLine(author.ToString());
             }
+            Console.WriteLine("====================");
             Console.WriteLine();
 
-            // Update name of category with id 1 from Spooky to Horror
-            Categories c3 = new Categories(1, "Horror");
-            qb.Update<Categories>(c3);
+            // Update author name with id 2
+            Author a3 = new Author(2, "J.K", "Rowling");
+            qb.Update<Author>(a3);
 
-            Console.WriteLine("Categories");
-            // Read all of the categories again to make sure the name updated
-            List<Categories> cats2 = qb.ReadAll<Categories>();
-            foreach (Categories cat in cats2)
+            // Read author with id 2 from the database to make sure name changed
+            Console.WriteLine(qb.Read<Author>(2).ToString());
+
+            // Delete author with id 2
+            qb.Delete<Author>(a3);
+
+
+            Console.WriteLine("All Authors");
+            Console.WriteLine("====================");
+            // Read and list all authors again to see if author with id 2 is deleted
+            List<Author> authors2 = qb.ReadAll<Author>();
+            foreach (Author author in authors2)
             {
-                Console.WriteLine(cat.Name.ToString());
+                Console.WriteLine(author.ToString());
             }
-            Console.WriteLine();
-
-            // Get information about user with id 1
-            Console.WriteLine(qb.Read<Users>(1));
-
-            // Remove category with id 1 from the database
-            qb.Delete<Categories>(c3);
-
-            // Read all of the categories one final time to see if the category was removed
-            Console.WriteLine("Categories");
-            List<Categories> cats3 = qb.ReadAll<Categories>();
-            foreach (Categories cat in cats3)
-            {
-                Console.WriteLine(cat.Name.ToString());
-            }
-            Console.WriteLine();
-
-            // Read the list of logs of books out on loan from the database
-            List<BooksOutOnLoan> logs = qb.ReadAll<BooksOutOnLoan>();
-            foreach (BooksOutOnLoan log in logs)
-            {
-                Console.WriteLine(log.ToString());
-            }
-
+            Console.WriteLine("====================");
         }
     }
 }

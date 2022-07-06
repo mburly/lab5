@@ -21,5 +21,12 @@ namespace QueryBuilder.Models
             FirstName = firstName;
             Surname = surname;
         }
+
+        public override string ToString()
+        {
+            return $"ID: {Id}\n" +
+                $"First Name: {FirstName}\n" +
+                $"Surname: {Surname}\n";
+        }
     }
 }
