@@ -18,9 +18,8 @@ namespace QueryBuilder.Models
         {
 
         }
-        public Books(int id, string title, string isbn, string dateOfPublication, int categoryId, int authorId)
+        public Books(string title, string isbn, string dateOfPublication, int categoryId, int authorId)
         {
-            Id = id;
             Title = title;
             Isbn = isbn;
             DateOfPublication = dateOfPublication;

@@ -15,9 +15,8 @@ namespace QueryBuilder.Models
         {
 
         }
-        public Author(int id, string firstName, string surname)
+        public Author(string firstName, string surname)
         {
-            Id = id;
             FirstName = firstName;
             Surname = surname;
         }

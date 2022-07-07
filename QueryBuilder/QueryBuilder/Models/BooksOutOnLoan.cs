@@ -18,9 +18,8 @@ namespace QueryBuilder.Models
         {
 
         }
-        public BooksOutOnLoan(int id, int bookId, string dateIssued, string dueDate, string dateReturned, int userId)
+        public BooksOutOnLoan(int bookId, string dateIssued, string dueDate, string dateReturned, int userId)
         {
-            Id = id;
             BookId = bookId;
             DateIssued = dateIssued;
             DueDate = dueDate;

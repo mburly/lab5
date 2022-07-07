@@ -12,61 +12,51 @@ namespace QueryBuilder
             QueryBuilder qb = new QueryBuilder(dbPath);
 
             // Create author objects
-            Author a1 = new Author(1, "George", "Martin");
-            Author a2 = new Author(2, "J.K", "Johnson");
-
-            // Add author object to database
+            Author a1 = new Author("George", "Martin");
+            Author a2 = new Author("J.K", "Johnson");
+            Author a3 = new Author("Arthur", "Miller");
             qb.Create<Author>(a1);
             qb.Create<Author>(a2);
-
-            Console.WriteLine("All Authors");
-            Console.WriteLine("====================");
-
-            // Read and list all authors in the database
-            List<Author> authors = qb.ReadAll<Author>();
-            foreach(Author author in authors)
-            {
-                Console.WriteLine(author.ToString());
-            }
-            Console.WriteLine("====================");
-            Console.WriteLine();
-
-            // Update author name with id 2
-            Author a3 = new Author(2, "J.K", "Rowling");
-            qb.Update<Author>(a3);
-
-            // Read author with id 2 from the database to make sure name changed
-            Console.WriteLine(qb.Read<Author>(2).ToString());
-
-            // Delete author with id 2
-            qb.Delete<Author>(a3);
-
-
-            Console.WriteLine("All Authors");
-            Console.WriteLine("====================");
-            // Read and list all authors again to see if author with id 2 is deleted
-            List<Author> authors2 = qb.ReadAll<Author>();
-            foreach (Author author in authors2)
-            {
-                Console.WriteLine(author.ToString());
-            }
-            Console.WriteLine("====================");
-
-
-            // Add another author with id 3 and re-add author with id 2
-            Author a4 = new Author(3, "Arthur", "Miller");
             qb.Create<Author>(a3);
-            qb.Create<Author>(a4);
-
-            List<Author> authors3 = qb.ReadAll<Author>();
 
             string outFile = $"{FileRoot.Root}{Path.DirectorySeparatorChar}authors.json";
-
+            List<Author> authors = qb.ReadAll<Author>();
             using (StreamWriter writer = new StreamWriter(outFile))
             {
                 JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(writer, authors3);
+                serializer.Serialize(writer, authors);
+            }
+
+            Categories c = new Categories("Fantasy");
+            Books b = new Books("A Game of Thrones", "9780553593716", "8/1/1996", 7, 16);
+            Books b2 = new Books("A Clash of Kings", "0553579908", "9/5/2000", 7, 16);
+            Users u = new Users("burlesonmf", "3001 Moss Creek Drive", "Student", 25, "burlesonmf@etsu.edu", "4074468773");
+            Users u2 = new Users("smithj", "50 Main Street", "Student", 0, "smithj@etsu.edu", "5551234567");
+            BooksOutOnLoan bol = new BooksOutOnLoan(10, "6/1/2022", "6/15/2022", "6/24/2022", 11);
+
+            qb.Create<Categories>(c);
+            qb.Create<Books>(b);
+            qb.Create<Books>(b2);
+            qb.Create<Users>(u);
+            qb.Create<Users>(u2);
+            qb.Create<BooksOutOnLoan>(bol);
+
+            string inFile = $"{FileRoot.Root}{Path.DirectorySeparatorChar}loans.json";
+
+            using (StreamReader sr = new StreamReader(inFile))
+            {
+                JsonSerializer seralizer = new JsonSerializer();
+                BooksOutOnLoan loan = (BooksOutOnLoan)seralizer.Deserialize(sr, typeof(BooksOutOnLoan));
+                qb.Create<BooksOutOnLoan>(loan);
+            }
+
+            // Read and print the books out on loan to make sure it was added
+            List<BooksOutOnLoan> loans = qb.ReadAll<BooksOutOnLoan>();
+            foreach(BooksOutOnLoan loan in loans)
+            {
+                Console.WriteLine(loan);
             }
         }
+
     }
 }

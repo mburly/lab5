@@ -19,9 +19,8 @@ namespace QueryBuilder.Models
         {
 
         }
-        public Users(int id, string userName, string userAddress, string otherUserDetails, int amountOfFine, string email, string phoneNumber)
+        public Users(string userName, string userAddress, string otherUserDetails, int amountOfFine, string email, string phoneNumber)
         {
-            Id = id;
             UserName = userName;
             UserAddress = userAddress;
             OtherUserDetails = otherUserDetails;

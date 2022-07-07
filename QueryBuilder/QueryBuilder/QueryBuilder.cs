@@ -105,6 +105,12 @@ namespace QueryBuilder
 
             for(int i = 0; i < values.Count; i++)
             {
+                // Since Id auto increments, don't need to include it in the
+                // insert statement
+                if (names[i] == "Id")
+                {
+                    continue;
+                }
                 if(i == values.Count - 1)
                 {
                     sbVals.Append($"{values[i]}");

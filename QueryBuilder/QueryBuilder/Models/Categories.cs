@@ -14,9 +14,8 @@ namespace QueryBuilder.Models
         {
 
         }
-        public Categories(int id, string name)
+        public Categories(string name)
         {
-            Id = id;
             Name = name;
         }
 
