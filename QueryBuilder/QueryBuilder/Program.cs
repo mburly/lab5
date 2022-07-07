@@ -1,5 +1,7 @@
 ﻿using System;
+using Newtonsoft.Json;
 using QueryBuilder.Models;
+
 namespace QueryBuilder
 {
     public class Program
@@ -49,6 +51,22 @@ namespace QueryBuilder
                 Console.WriteLine(author.ToString());
             }
             Console.WriteLine("====================");
+
+
+            // Add another author with id 3 and re-add author with id 2
+            Author a4 = new Author(3, "Arthur", "Miller");
+            qb.Create<Author>(a3);
+            qb.Create<Author>(a4);
+
+            List<Author> authors3 = qb.ReadAll<Author>();
+
+            string outFile = $"{FileRoot.Root}{Path.DirectorySeparatorChar}authors.json";
+
+            using (StreamWriter writer = new StreamWriter(outFile))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(writer, authors3);
+            }
         }
     }
 }

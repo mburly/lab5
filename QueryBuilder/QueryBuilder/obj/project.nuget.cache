@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Ato6hdClLjeccBmbIvKp5gSOKo65a8n8YGVkU0YzOhiB2rUvlKdaMrn1rCZqYBWI7gMFwRaGLZ8nznbUx7RFgA==",
+  "dgSpecHash": "hTuy+/yGllNR5uQlwDRhJDaS3p7YkUsnwcvB9YOrR5OETn8YX7qeexay7kCNzhKjFBYspivbcvsfLhsINnhwiw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Michael\\Desktop\\lab5\\QueryBuilder\\QueryBuilder\\QueryBuilder.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Michael\\.nuget\\packages\\microsoft.data.sqlite\\6.0.6\\microsoft.data.sqlite.6.0.6.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.6\\microsoft.data.sqlite.core.6.0.6.nupkg.sha512",
+    "C:\\Users\\Michael\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.6\\sqlitepclraw.bundle_e_sqlite3.2.0.6.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\sqlitepclraw.core\\2.0.6\\sqlitepclraw.core.2.0.6.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.6\\sqlitepclraw.lib.e_sqlite3.2.0.6.nupkg.sha512",

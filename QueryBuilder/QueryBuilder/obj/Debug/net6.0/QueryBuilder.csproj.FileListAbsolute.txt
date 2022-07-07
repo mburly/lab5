@@ -33,3 +33,4 @@ C:\Users\Michael\Desktop\lab5\QueryBuilder\QueryBuilder\bin\Debug\net6.0\runtime
 C:\Users\Michael\Desktop\lab5\QueryBuilder\QueryBuilder\bin\Debug\net6.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Michael\Desktop\lab5\QueryBuilder\QueryBuilder\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\Michael\Desktop\lab5\QueryBuilder\QueryBuilder\obj\Debug\net6.0\QueryBuilder.csproj.CopyComplete
+C:\Users\Michael\Desktop\lab5\QueryBuilder\QueryBuilder\bin\Debug\net6.0\Newtonsoft.Json.dll
